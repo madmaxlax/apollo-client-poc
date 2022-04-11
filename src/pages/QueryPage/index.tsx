@@ -1,5 +1,5 @@
 import { gql, useQuery, useReactiveVar } from '@apollo/client';
-import { Button, Typography } from '@material-ui/core';
+import { Button, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { Link } from '../../components';
 import { addColor, initialUserSettingsVar, otherVar } from '../../models/cachemodel';
@@ -38,9 +38,19 @@ export const QueryPage = () => {
   const otherSettingsData = useReactiveVar(otherVar);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :({error})</p>;
+  if (error) return <p>Error :({error.message})</p>;
   return (
     <>
+      <Typography variant="h3">
+        Example with Apollo{' '}
+        <a
+          target="_blank"
+          href="https://www.apollographql.com/docs/react/local-state/reactive-variables/"
+          rel="noreferrer"
+        >
+          Reactive Variables
+        </a>
+      </Typography>
       <Typography>Fav Color: {mySettingsData.favoriteColor}</Typography>
       <Typography>Other fav Color: {otherSettingsData.favoriteColor}</Typography>
       <Button
@@ -50,8 +60,10 @@ export const QueryPage = () => {
           // initialUserSettingsVar({ ...initialUserSettingsVar(), favoriteColor: 'blue' });
         }}
       >
-        Add Color
+        Set Color to ReactiveVar
       </Button>
+      <Divider />
+      <Typography variant="h3">Returned from GraphQL</Typography>
       {data?.characters?.results.map((character: Character, index: number) => (
         <div key={index}>
           <p>
