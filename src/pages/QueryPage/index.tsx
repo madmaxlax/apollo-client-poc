@@ -1,5 +1,5 @@
 import { gql, useQuery, useReactiveVar } from '@apollo/client';
-import { Button, Typography } from '@material-ui/core';
+import { Button, Divider, Typography } from '@mui/material';
 import React from 'react';
 import { Link } from '../../components';
 import { addColor, initialUserSettingsVar, otherVar } from '../../models/cachemodel';
@@ -38,7 +38,7 @@ export const QueryPage = () => {
   const otherSettingsData = useReactiveVar(otherVar);
 
   if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :({error})</p>;
+  if (error) return <p>Error :({error.message})</p>;
   return (
     <>
       <Typography>Fav Color: {mySettingsData.favoriteColor}</Typography>
@@ -52,6 +52,8 @@ export const QueryPage = () => {
       >
         Add Color
       </Button>
+      <Divider />
+      <Typography variant="h2">Returned from </Typography>
       {data?.characters?.results.map((character: Character, index: number) => (
         <div key={index}>
           <p>

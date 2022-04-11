@@ -1,5 +1,6 @@
-import { AppBar, Button, Drawer, IconButton, makeStyles, Toolbar, Typography } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import { AppBar, Button, Drawer, IconButton, Toolbar, Typography } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 import clsx from 'clsx';
 import React, { useState } from 'react';
 import { CustomTheme } from '../../../theme';
