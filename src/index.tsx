@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './assets/css/index.css';
 import ScrollToTop from './components/ScrollToTop';
 import { cacheMoney } from './models/cachemodel';
-import Routes from './Routes';
+import { QueryPage } from './pages/QueryPage';
 import * as serviceWorker from './serviceWorker';
 import theme from './theme';
 
@@ -23,7 +23,8 @@ ReactDOM.render(
       <CssBaseline />
       <Router basename={process.env.BASE_URL || '/'}>
         <ScrollToTop />
-        <Routes />
+        {/* <Routes /> i*/}
+        <QueryPage />
       </Router>
     </ThemeProvider>
   </ApolloProvider>,
